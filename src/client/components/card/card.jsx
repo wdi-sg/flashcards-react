@@ -45,7 +45,10 @@ class Card extends React.Component {
 
   clickNext(){
 
-    this.setState({clickCounter: this.state.clickCounter+1})
+    if (this.state.clickCounter < cards.length-1){
+    this.setState({clickCounter: this.state.clickCounter+1})} else {
+        this.setState({message: "Sorry, this is the last card"})
+    }
   }
 
 
@@ -93,8 +96,8 @@ class Card extends React.Component {
     return (
       <div>
       <div>{this.state.message}</div>
-        <div style = {{border: "1px solid black"}} className = {front}>Card {cardInfo[index].question} </div>
-        <div style = {{border: "1px solid black"}} className = {back}>Back of Card {cardInfo[index].answer}</div>
+        <div style = {{border: "1px solid black"}} className = {front}>Question: {cardInfo[index].question} </div>
+        <div style = {{border: "1px solid black"}} className = {back}>Answer: {cardInfo[index].answer}</div>
 
 
         <button onClick={()=>{this.clickHandler()}}>click to change</button>
