@@ -12,13 +12,34 @@ class Form extends React.Component {
     super();
 
     this.state = {
-      clicked:false
+      clicked:false,
+      currentAnswer: '',
     };
   }
 
   clickHandler(){
 
     this.setState({clicked:!this.state.clicked})
+  }
+
+  changeHandler(){
+    console.log(event.target.value)
+    // this.setState({question: event.target.value})
+  }
+
+  showAnswer(answer){
+    console.log(answer)
+    this.setState({currentAnswer: answer})
+  }
+
+  checkAnswer(answer){
+    if(event.key === 'Enter'){
+        if(event.target.value === answer){
+            this.setState({currentAnswer: "Correct"})
+        } else {
+            this.setState({currentAnswer: "Wrong"})
+        }
+    }
   }
 
   render() {
@@ -31,11 +52,29 @@ class Form extends React.Component {
       }
     )
 
+    const card = cx(
+        styles.cardhide,
+        {
+            [styles.card]: (this.props.id === "Card2"),
+        }
+    )
+
+    const displayCard = this.props.cards.map((x, index)=>{
+        return (
+            <div key={index} id={"Card"+index}>
+                <p>{x.question}</p>
+                <button onClick={()=>{this.showAnswer(x.answer)}}>Show answer</button>
+                <input onKeyPress={()=>{this.checkAnswer(x.answer)}}/>
+            </div>
+        )
+    })
+
     return (
       <div>
-        <p className={display}>yay</p>
+        <p className={display}>{this.state.currentAnswer}</p>
+        {displayCard}
         <button onClick={()=>{this.clickHandler()}}>click to change</button>
-        <input className={styles.name} />
+        <input className={styles.name} onChange={()=>{this.changeHandler()}}/>
       </div>
     );
   }
