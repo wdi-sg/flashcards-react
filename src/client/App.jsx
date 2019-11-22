@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div>
         Flash Cards
-        <Card />
+        <Card question="how are you?" answer="I'm good"/>
       </div>
     );
   }
