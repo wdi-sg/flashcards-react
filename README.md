@@ -2,6 +2,8 @@
 
 Build a set of flashcards that runs in the browser.
 
+![https://github.com/wdi-sg/flashcards-react/blob/master/example.png?raw=true](https://github.com/wdi-sg/flashcards-react/blob/master/example.png?raw=true)
+
 Start out with a hard coded set of flash cards:
 
 ```js
