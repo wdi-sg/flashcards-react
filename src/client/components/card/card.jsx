@@ -21,8 +21,9 @@ class Card extends React.Component {
     render() {
 
         const answer = cx(
-            { // dynamic styles
-                [styles.clicked]: this.state.clicked // make the key the style name, and the value the dynamic boolean
+            { 
+                [styles.hideAnswer]: !this.props.showAnswer,
+                [styles.showAnswer]: this.props.showAnswer
             }
         )
 
@@ -30,7 +31,7 @@ class Card extends React.Component {
             <div onClick={()=>{this.clickHandler()}} className={styles.card}>
                 <p>{this.props.question}</p>
                 <p className={answer}>{this.props.answer}</p>
-            </div>
+            </div>            
         );
 
 
