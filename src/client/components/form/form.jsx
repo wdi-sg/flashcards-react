@@ -72,9 +72,10 @@ class Form extends React.Component {
     return (
       <div>
         <p className={display}>{this.state.currentAnswer}</p>
-        {displayCard}
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
-        <input className={styles.name} onChange={()=>{this.changeHandler()}}/>
+        <p className={display}>{this.props.cards[this.props.cardIndex].question}</p>
+        <button onClick={()=>{this.props.nextQns()}}>Next Question</button>
+        <button onClick={()=>{this.props.prvQns()}}>Previous Question</button>
+        {/*displayCard*/}
       </div>
     );
   }
