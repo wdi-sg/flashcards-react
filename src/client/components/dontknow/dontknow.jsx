@@ -9,14 +9,13 @@ class DontKnows extends React.Component {
   }
 
   addIdk(card) {
-    console.log("Add to IDKs")
     this.setState({idk:[card, ...this.state.idk]})
   }
 
   render() {
 
     const list = this.state.idk.map((card)=>{
-      return <li>{card.question}</li>
+      return <li>{card.question} is {card.answer}</li>
     });
 
     return (
