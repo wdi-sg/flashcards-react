@@ -9,6 +9,7 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
+        currentAnswer: '',
         cardIndex: 0,
         cards: [
         {
@@ -48,16 +49,19 @@ class App extends React.Component {
     if (state === -1){
         state = this.state.cards.length - 1;
     }
-    this.setState({cardIndex: state})
+    this.setState({cardIndex: state});
+  }
+
+  answer(text){
+    this.setState({currentAnswer: text});
   }
 
   render() {
     return (
       <div>
-        <Form cards={this.state.cards} cardIndex={this.state.cardIndex} nextQns={()=>{this.nextQns()}} prvQns={()=>{this.prvQns()}}/>
-        <Input cards={this.state.cards}/>
+        <Form currentAnswer={this.state.currentAnswer} cards={this.state.cards} cardIndex={this.state.cardIndex} nextQns={()=>{this.nextQns()}} prvQns={()=>{this.prvQns()}}/>
+        <Input cards={this.state.cards} cardIndex={this.state.cardIndex} answer={(text)=>{this.answer(text)}}/>
         <NewQns store={(question, answer)=>{this.store(question,answer)}}/>
-        Welcome.
       </div>
     );
   }

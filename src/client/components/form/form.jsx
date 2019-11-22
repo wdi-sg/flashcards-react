@@ -71,8 +71,14 @@ class Form extends React.Component {
 
     return (
       <div>
-        <p className={display}>{this.state.currentAnswer}</p>
-        <p className={display}>{this.props.cards[this.props.cardIndex].question}</p>
+        <div className={display}>
+            <p>Answer</p>
+            <p>{this.props.currentAnswer}</p>
+        </div>
+        <div className={display}>
+            <p>Question</p>
+            <p>{this.props.cards[this.props.cardIndex].question}</p>
+        </div>
         <button onClick={()=>{this.props.nextQns()}}>Next Question</button>
         <button onClick={()=>{this.props.prvQns()}}>Previous Question</button>
         {/*displayCard*/}
