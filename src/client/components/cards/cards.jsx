@@ -1,7 +1,7 @@
 import React from 'react';
-// import classnames from 'classnames';
-// import styles from './style.scss';
-// const cx = classnames.bind(styles)
+import classnames from 'classnames';
+import styles from './style.scss';
+const cx = classnames.bind(styles)
 
 const cards = [
   {
@@ -9,7 +9,7 @@ const cards = [
     answer: 4
   },
   {
-    question: 'capital of Malaysia',
+    question: 'Capital of Malaysia',
     answer: 'Kuala Lumpur'
   },
   {
@@ -52,13 +52,13 @@ class Cards extends React.Component {
 
   render() {
 
-    // // calling cx sets all the styles on the element in the display variable
-    // const display = cx(
-    //   styles.myclass, // styles that never change
-    //   { // dynamic styles
-    //     [styles.show]: this.state.show // make the key the style name, and the value the dynamic boolean
-    //   }
-    // )
+    // calling cx sets all the styles on the element in the display variable
+    const answer = cx(
+      styles.hide, // styles that never change
+      { // dynamic styles
+        [styles.show]: this.state.show // make the key the style name, and the value the dynamic boolean
+      }
+    )
 
     return (
       <div>
@@ -67,10 +67,10 @@ class Cards extends React.Component {
           <button onClick={()=>{this.previousCard()}}>Previous Card</button>
           <button onClick={()=>{this.nextCard()}}>Next Card</button>
         </div>
-        <div class="answer">
+        <div className={answer}>
           <p>{cards[this.state.index].answer}</p>
-          <button onClick={()=>{this.showAnswer()}}>Show Answer</button>
         </div>
+        <button onClick={()=>{this.showAnswer()}}>Show Answer</button>
       </div>
     );
   }
