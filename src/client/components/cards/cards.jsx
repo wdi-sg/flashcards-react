@@ -1,4 +1,7 @@
 import React from 'react';
+// import classnames from 'classnames';
+// import styles from './style.scss';
+// const cx = classnames.bind(styles)
 
 const cards = [
   {
@@ -19,23 +22,55 @@ class Cards extends React.Component {
 
   constructor(){
     super();
+    this.state = {
+      index: 0,  // to show which card
+      show: false
+    }
   }
 
-  clickHandler(){
+  previousCard(){
+    if (this.state.index > 0) {
+      let previous = this.state.index - 1
+      this.setState({index: previous})
+    } else {
+      alert("This is the first card.")
+    }
+  }
 
-    this.setState({clicked:!this.state.clicked})
+  nextCard(){
+    if (this.state.index < cards.length-1) {
+      let next = this.state.index + 1
+      this.setState({index: next})
+    } else {
+      alert("This is the last card.")
+    }
+  }
+
+  showAnswer(){
+    this.setState({show:!this.state.show})
   }
 
   render() {
 
-    const question = cards.map((card)=>{
-      return <h3>{card.question}</h3>
-    })
+    // // calling cx sets all the styles on the element in the display variable
+    // const display = cx(
+    //   styles.myclass, // styles that never change
+    //   { // dynamic styles
+    //     [styles.show]: this.state.show // make the key the style name, and the value the dynamic boolean
+    //   }
+    // )
 
     return (
       <div>
-        {question}
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
+        <div class="question">
+          <h3>{cards[this.state.index].question}</h3>
+          <button onClick={()=>{this.previousCard()}}>Previous Card</button>
+          <button onClick={()=>{this.nextCard()}}>Next Card</button>
+        </div>
+        <div class="answer">
+          <p>{cards[this.state.index].answer}</p>
+          <button onClick={()=>{this.showAnswer()}}>Show Answer</button>
+        </div>
       </div>
     );
   }
