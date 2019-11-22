@@ -24,7 +24,9 @@ class Cards extends React.Component {
     super();
     this.state = {
       index: 0,  // to show which card
-      show: false
+      qns: false,
+      ans: false,
+      button: "Show Anwser"
     }
   }
 
@@ -47,30 +49,43 @@ class Cards extends React.Component {
   }
 
   showAnswer(){
-    this.setState({show:!this.state.show})
+    this.setState({qns:!this.state.qns})
+    this.setState({ans:!this.state.ans})
+    if (this.state.button.includes("Show")) {
+      this.setState({button: "Hide Answer"})
+    } else {
+      this.setState({button: "Show Answer"})
+    }
   }
 
   render() {
 
     // calling cx sets all the styles on the element in the display variable
-    const answer = cx(
-      styles.hide, // styles that never change
+    const question = cx(
+      styles.showQns, // show question
       { // dynamic styles
-        [styles.show]: this.state.show // make the key the style name, and the value the dynamic boolean
+        [styles.hide]: this.state.qns // hide question
+      }
+    )
+
+    const answer = cx(
+      styles.hide, // hide answer
+      { // dynamic styles
+        [styles.showAns]: this.state.ans // show answer
       }
     )
 
     return (
       <div>
-        <div class="question">
-          <h3>{cards[this.state.index].question}</h3>
-          <button onClick={()=>{this.previousCard()}}>Previous Card</button>
-          <button onClick={()=>{this.nextCard()}}>Next Card</button>
+        <button onClick={()=>{this.previousCard()}}>Previous Card</button>
+        <button onClick={()=>{this.nextCard()}}>Next Card</button>
+        <div class={question}>
+          <p>{cards[this.state.index].question}</p>
         </div>
         <div className={answer}>
           <p>{cards[this.state.index].answer}</p>
         </div>
-        <button onClick={()=>{this.showAnswer()}}>Show Answer</button>
+        <button onClick={()=>{this.showAnswer()}}>{this.state.button}</button>
       </div>
     );
   }
