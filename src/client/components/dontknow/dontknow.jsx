@@ -14,6 +14,7 @@ class DontKnows extends React.Component {
 
   render() {
 
+    const data = this.state.idk.length
     const list = this.state.idk.map((card)=>{
       return <li>{card.question} is {card.answer}</li>
     });
@@ -21,7 +22,7 @@ class DontKnows extends React.Component {
     return (
 
       <div>
-        <button onClick={()=>{this.addIdk(this.props.card)}}>Don't Know</button><br/>
+        <button onClick={()=>{this.addIdk(this.props.card)}}>Don't Know {data}</button><br/>
         IDKs:
         <ul>{list}</ul>
       </div>

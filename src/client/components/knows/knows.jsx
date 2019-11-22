@@ -15,6 +15,7 @@ class Knows extends React.Component {
 
   render() {
 
+    const data = this.state.knows.length
     const list = this.state.knows.map((card)=>{
       return <li>{card.question} is {card.answer}</li>
     });
@@ -22,7 +23,7 @@ class Knows extends React.Component {
     return (
 
       <div>
-        <button onClick={()=>{this.addKnown(this.props.card)}}>Knows</button><br/>
+        <button onClick={()=>{this.addKnown(this.props.card)}}>Knows {data}</button><br/>
         Knows:
         <ul>{list}</ul>
       </div>
