@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      showAnswer: false
+      showAnswer: false,
+      cardNumber: 0
     }
   }
 
@@ -18,10 +19,26 @@ class App extends React.Component {
   }
 
   render() {
+
+    const content = [
+      {
+        question: '2+2',
+        answer: 4
+      },
+      {
+        question: 'capital of Malaysia',
+        answer: 'Kuala Lumpur'
+      },
+      {
+        question: 'Kilometers in a mile',
+        answer: 1.6
+      },
+    ];
+    
     return (
       <div>
         Flash Cards
-        <Card question="how are you?" answer="I'm good" showAnswer={this.state.showAnswer}/>
+        <Card content={content} showAnswer={this.state.showAnswer} cardNumber={this.state.cardNumber}/>
         <Button buttonText="Show Answer" clicked={()=>{this.buttonClickedHandler()}}/>
       </div>
     );

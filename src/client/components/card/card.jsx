@@ -25,12 +25,16 @@ class Card extends React.Component {
                 [styles.hideAnswer]: !this.props.showAnswer,
                 [styles.showAnswer]: this.props.showAnswer
             }
-        )
+        );
+
+        let {content, cardNumber} = this.props;
 
         return (
             <div onClick={()=>{this.clickHandler()}} className={styles.card}>
-                <p>{this.props.question}</p>
-                <p className={answer}>{this.props.answer}</p>
+                <p>{content[cardNumber].question}</p>
+                <p className={answer}>
+                    {content[cardNumber].answer}
+                </p>
             </div>            
         );
 
