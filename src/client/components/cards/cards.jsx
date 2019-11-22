@@ -1,6 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './style.scss';
+import DontKnows from './../dontknow/dontknow';
+
 const cx = classnames.bind(styles)
 
 const cards = [
@@ -86,6 +88,7 @@ class Cards extends React.Component {
           <p>{cards[this.state.index].answer}</p>
         </div>
         <button onClick={()=>{this.showAnswer()}}>{this.state.button}</button>
+        <DontKnows card={cards[this.state.index]} />
       </div>
     );
   }
