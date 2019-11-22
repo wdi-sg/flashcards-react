@@ -31,16 +31,20 @@ When the user clicks a button, show the answer.
 When the user clicks a button, advance to the next card.
 
 #### Further
-The user can mark a card, "know well", "know", "don't know". Each answered card will be put into a different box on the screen. (a sibling component)
+The user can mark a card, "know", "don't know". Each answered card will be put into a different box on the screen. (a sibling component)
 
 #### Further
-The user can guess the answer by entering it into a form input. If the user gets it wrong it can automatically go into "don't know"
+The user can guess the answer by entering it into a form input.
+
+If the user gets it wrong it can automatically go into "don't know"
+
+If the user gets it right, it goes into "know"
 
 #### Further
-If the user gets the right answer in less than 10 seconds, put it in "know well" otherwise, put it in "know"
+At the finish of running throughn all the cards, give stats to the user about their answers.
 
 #### Further
-Add more options to the cards:
+Add more options to the card questions: (you can still hard code the questions)
 
 - multiple choice answers
 - embedded youtube videos
