@@ -1,0 +1,47 @@
+{
+  "version": "9.9.0",
+  "description": "React boilerplate with ES2015, Express.js, and Webpack 3",
+  "license": "MIT",
+  "engines": {
+    "node": "11.6.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "prebuild": "rimraf build",
+    "build": "npm run build:client",
+    "build:client": "cross-env NODE_ENV=production webpack -p --progress --config=config/webpack.config.prod.js --mode none"
+  },
+  "postcss": {},
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": ">=8.0.5",
+    "babel-watch": ">=7.0.0",
+    "cross-env": ">=5.2.0",
+    "css-loader": ">=2.1.0",
+    "extract-text-webpack-plugin": ">=4.0.0-beta.0",
+    "html-loader": ">=0.5.5",
+    "html-webpack-harddisk-plugin": ">=1.0.1",
+    "html-webpack-plugin": ">=3.2.0",
+    "node-sass": "^4.12.0",
+    "postcss-load-config": ">=2.0.0",
+    "postcss-loader": ">=3.0.0",
+    "react-hot-loader": ">=4.6.5",
+    "rimraf": ">=2.6.3",
+    "sass-loader": ">=7.1.0",
+    "style-loader": ">=0.23.1",
+    "webpack": "^4.29.4",
+    "webpack-cli": ">=3.2.3",
+    "webpack-dev-middleware": ">=3.5.2",
+    "webpack-hot-middleware": ">=2.24.3",
+    "webpack-merge": ">=4.2.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "express": ">=4.16.4",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  }
+}
