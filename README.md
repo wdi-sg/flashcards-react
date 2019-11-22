@@ -29,7 +29,7 @@ When the user clicks a button, show the answer.
 When the user clicks a button, advance to the next card.
 
 #### Further
-The user can mark a card, "know well", "know", "don't know". Each answered card will be put into a different box on the screen.
+The user can mark a card, "know well", "know", "don't know". Each answered card will be put into a different box on the screen. (a sibling component)
 
 #### Further
 The user can guess the answer by entering it into a form input. If the user gets it wrong it can automatically go into "don't know"
