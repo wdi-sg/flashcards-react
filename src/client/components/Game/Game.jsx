@@ -11,11 +11,11 @@ class Game extends React.Component {
     }
 
     previousQuestion() {
-        this.setState({questionNum: this.state.questionNum - 1})
+        this.setState({questionNum: this.state.questionNum - 1,showQuestion: true})
     }
 
     nextQuestion() {
-        this.setState({questionNum: this.state.questionNum + 1})
+        this.setState({questionNum: this.state.questionNum + 1,showQuestion: true})
     }
 
     questionChoice(index) {
@@ -30,7 +30,7 @@ class Game extends React.Component {
     render() {
         return (<div className={styles.game}>
             <button onClick={()=>{this.previousQuestion()}}>Previous</button>
-            <Card card={this.questionChoice(this.state.questionNum)}/>
+            <Card state={this.state} card={this.questionChoice(this.state.questionNum)}/>
             <button onClick={()=>{this.nextQuestion()}}>Next</button>
         </div>);
     }

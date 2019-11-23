@@ -7,15 +7,21 @@ class Card extends React.Component {
     constructor(){
         super();
         this.state = {
+            showQuestion: true
         };
+    }
+
+    flipCard() {
+        this.setState({showQuestion: !this.state.showQuestion})
+    }
+
+    resetCard() {
+        this.setState({showQuestion: true})
     }
 
     render() {
         let {question,answer} = this.props.card
-        return (<div>
-            <Question question={question}/>
-            <Answer answer={answer}/>
-        </div>);
+        return (this.state.showQuestion ? <Question flipCard={()=>{this.flipCard()}} question={question}/> : <Answer flipCard={()=>{this.flipCard()}} answer={answer}/>)
     }
 }
 
