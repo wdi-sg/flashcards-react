@@ -46,7 +46,7 @@ class Card extends React.Component {
   clickNext(){
 
     if (this.state.clickCounter < cards.length-1){
-    this.setState({clickCounter: this.state.clickCounter+1, message:""})} else {
+    this.setState({clickCounter: this.state.clickCounter+1, message:"", clicked:false})} else {
         this.setState({message: "Sorry, this is the last card"})
     }
   }
@@ -55,7 +55,7 @@ class Card extends React.Component {
   clickPrevious(){
 
     if (this.state.clickCounter > 0){
-    this.setState({clickCounter: this.state.clickCounter-1, message:""})} else {
+    this.setState({clickCounter: this.state.clickCounter-1, message:"", clicked:false})} else {
     this.setState({message: "No more previous cards"})
     }
   }
