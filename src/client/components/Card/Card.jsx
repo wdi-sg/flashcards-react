@@ -17,6 +17,13 @@ class Card extends React.Component {
     this.setState({showAns: !this.state.showAns})
   }
 
+  nextHandler(){
+    //let newCardNum = {this.state.cardNum} + 1;
+    this.setState({cardNum: this.state.cardNum + 1});
+    console.log("from nextHandler: ", this.cardNum);
+    this.setState({showAns: !this.state.showAns})
+  }
+
   render() {
     const cards = [
       {
@@ -34,8 +41,8 @@ class Card extends React.Component {
     ];
     console.log(cards);
 
-    let firstQn = cards[0].question;
-    let firstAns = cards[0].answer;
+    let questionCard = cards[this.state.cardNum].question;
+    let answerCard = cards[this.state.cardNum].answer;
 
     // const showQuestion = cards.map((eachCard, index) => {
     //     return ( <p key={index}>{eachCard.question}</p> )
@@ -52,25 +59,25 @@ class Card extends React.Component {
       // }
     )
 
-    const answer = cx(
+    const answerStyle = cx(
       styles.ansHide,
         {
            [styles.ansReveal]: this.state.showAns
         }
     )
 
-    const question = cx(
+    const questionStyle = cx(
         styles.qn
     )
 
     return (
       <div>
         <div className={display}>
-            <p className={question}>{firstQn}</p>
-            <p className={answer}>{firstAns}</p>
+            <p className={questionStyle}>{questionCard}</p>
+            <p className={answerStyle}>{answerCard}</p>
         </div>
         <button onClick={()=>{this.checkHandler()}}>Check</button>
-
+        <button onClick={()=>{this.nextHandler()}}>Next Card</button>
       </div>
     );
   }
