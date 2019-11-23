@@ -13,8 +13,8 @@ class SortBucket extends React.Component {
             [styles.show]: dunno.includes(questionNum)
         })
         return (<div>
-            <button className={knowButton} onClick={(boolean)=>{this.props.sortCard(true)}}>I know!</button>
-            <button className={dunnoButton} onClick={(boolean)=>{this.props.sortCard(false)}}>I don't know...</button>
+            <button className={knowButton} onClick={()=>{this.props.sortCard(true)}}>I know!</button>
+            <button className={dunnoButton} onClick={()=>{this.props.sortCard(false)}}>I don't know...</button>
         </div>)
     }
 }

@@ -6,9 +6,13 @@
 }
 
 .section {
-	width: 33vw;
+	width: 20vw;
 }
 
 .edge {
 	visibility: hidden;
+}
+
+.bottom {
+	align-self: flex-end;
 }

@@ -35,7 +35,7 @@ class Game extends React.Component {
 
     sortCard(boolean) {
         this.setState(boolean ? {know:[this.state.questionNum,...this.state.know]} : {dunno:[this.state.questionNum,...this.state.dunno]})
-        this.setState(boolean ? {dunno:[this.state.dunno.filter(q => q == this.state.questionNum)]} : {know:[this.state.know.filter(q => q == this.state.questionNum)]})
+        console.log(this.state.know,this.state.dunno)
     }
 
     render() {
@@ -50,6 +50,9 @@ class Game extends React.Component {
             [styles.edge]: this.state.questionNum == this.state.cards.length - 1
         })
         return (<div className={styles.game}>
+            <div className={styles.bottom}>
+                <h1>{this.state.know.length} I know!</h1>
+            </div>
             <div className={firstCard}>
                 <button onClick={()=>{this.previousQuestion()}}>Previous</button>
             </div>
@@ -59,6 +62,9 @@ class Game extends React.Component {
             </div>
             <div className={lastCard}>
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
+            </div>
+            <div className={styles.bottom}>
+                <h1>{this.state.dunno.length} I don't know...</h1>
             </div>
         </div>);
     }
