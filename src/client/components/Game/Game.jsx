@@ -35,6 +35,7 @@ class Game extends React.Component {
 
     sortCard(boolean) {
         this.setState(boolean ? {know:[this.state.questionNum,...this.state.know]} : {dunno:[this.state.questionNum,...this.state.dunno]})
+        this.setState(boolean ? {dunno:[this.state.dunno.filter(q => q == this.state.questionNum)]} : {know:[this.state.know.filter(q => q == this.state.questionNum)]})
     }
 
     render() {
