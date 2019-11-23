@@ -69,13 +69,18 @@ class Card extends React.Component {
 
     // calling cx sets all the styles on the element in the display variable
     let display = null
+    let show = null
 
 
     if (this.state.clicked === false){
         display = cards.question
+        show = "Show answer"
     } else {
         display = cards.answer
+        show = "Show question"
     }
+
+
 
     const front = cx(
       styles.visible,
@@ -93,25 +98,28 @@ class Card extends React.Component {
       }
     )
 
+
+
     let cardInfo = cards.map(card => {return {card}.card})
 
     let index = this.state.clickCounter
 
     return (
       <div>
-      <div>{this.state.message}</div>
-        <div style = {{border: "1px solid black"}} className = {front}>Question: {cardInfo[index].question} </div>
-        <div style = {{border: "1px solid black"}} className = {back}>Answer: {cardInfo[index].answer}</div>
 
+      <div className = "jumbotron">
+        <div className = {front}>Question: {cardInfo[index].question} </div>
+        <div className = {back}>Answer: {cardInfo[index].answer}</div>
+        </div>
 
-        <button onClick={this.clickHandler}>click to change</button>
+        <button onClick={this.clickHandler}>{show}</button>
         <br/>
 
         <button onClick={this.clickPrevious}>Previous Card</button>
 
         <button onClick={this.clickNext}>Next Card</button>
 
-
+         {this.state.message ===""? null:<p className="alert alert-danger" >{this.state.message}</p>}
 
       </div>
     );
