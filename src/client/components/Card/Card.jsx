@@ -7,6 +7,14 @@ class Card extends React.Component {
 
   constructor(){
     super();
+    this.state = {
+      cardNum: 0,
+      showAns: false
+    }
+  }
+
+  checkHandler(){
+    this.setState({showAns: !this.state.showAns})
   }
 
   render() {
@@ -44,13 +52,24 @@ class Card extends React.Component {
       // }
     )
 
+    const answer = cx(
+      styles.ansHide,
+        {
+           [styles.ansReveal]: this.state.showAns
+        }
+    )
+
+    const question = cx(
+        styles.qn
+    )
+
     return (
       <div>
         <div className={display}>
-        <h2>{firstQn}</h2>
-        <h2>{firstAns}</h2>
+            <p className={question}>{firstQn}</p>
+            <p className={answer}>{firstAns}</p>
         </div>
-
+        <button onClick={()=>{this.checkHandler()}}>Check</button>
 
       </div>
     );

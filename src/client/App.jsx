@@ -7,23 +7,14 @@ class App extends React.Component {
 
   constructor(){
     super();
-    this.state = {
-      question: 0,
-      answer: 0
-    }
   }
 
-   checkHandler(){
 
-
-  }
 
   render() {
     return (
       <div>
         <Card />
-        <button onClick={()=>{this.checkHandler()}}>Check</button>
-        <button onClick={()=>{this.clickHandler()}}>Next Card</button>
       </div>
     );
   }
