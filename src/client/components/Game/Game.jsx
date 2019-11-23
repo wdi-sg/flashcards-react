@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './style.scss';
 import Card from '../Card/Card';
 import classnames from 'classnames';
+import SortBucket from '../SortBucket/SortBucket'
 const cx = classnames.bind(styles)
 
 class Game extends React.Component {
@@ -14,7 +15,9 @@ class Game extends React.Component {
                 {question: '2+2',answer: 4},
                 {question: 'capital of Malaysia',answer: 'Kuala Lumpur'},
                 {question: 'Kilometers in a mile',answer: 1.6},
-            ]
+            ],
+            know:[],
+            dunno:[]
         };
     }
 
@@ -28,6 +31,11 @@ class Game extends React.Component {
 
     flipCard() {
         this.setState({showQuestion: !this.state.showQuestion})
+    }
+
+    sortCard(boolean) {
+        this.setState(boolean ? {know:[this.state.questionNum,...this.state.know]} : {dunno:[this.state.questionNum,...this.state.dunno]})
+        console.log(this.state)
     }
 
     render() {
@@ -47,6 +55,7 @@ class Game extends React.Component {
             </div>
             <div className={styles.section}>
                 <Card state={this.state} card={this.state.cards[this.state.questionNum]} flipCard={()=>{this.flipCard()}}/>
+                <SortBucket sortCard={(boolean)=>{this.sortCard(boolean)}} />
             </div>
             <div className={lastCard}>
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
