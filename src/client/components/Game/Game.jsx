@@ -50,9 +50,6 @@ class Game extends React.Component {
             [styles.edge]: this.state.questionNum == this.state.cards.length - 1
         })
         return (<div className={styles.game}>
-            <div className={styles.bottom}>
-                <h1>{this.state.know.length} I know!</h1>
-            </div>
             <div className={firstCard}>
                 <button onClick={()=>{this.previousQuestion()}}>Previous</button>
             </div>
@@ -63,7 +60,10 @@ class Game extends React.Component {
             <div className={lastCard}>
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
             </div>
-            <div className={styles.bottom}>
+            <div className={wells}>
+                <h1>{this.state.know.length} I know!</h1>
+            </div>
+            <div className={wells}>
                 <h1>{this.state.dunno.length} I don't know...</h1>
             </div>
         </div>);
