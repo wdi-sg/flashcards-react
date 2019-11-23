@@ -1,9 +1,7 @@
 import React from 'react';
-
 import classnames from 'classnames';
-
 import styles from './style.scss';
-
+import Card from './components/Card/Card';
 const cx = classnames.bind(styles)
 
 class Form extends React.Component {
@@ -12,13 +10,13 @@ class Form extends React.Component {
     super();
 
     this.state = {
-      clicked:false
+
     };
   }
 
   clickHandler(){
 
-    this.setState({clicked:!this.state.clicked})
+
   }
 
   render() {
@@ -33,9 +31,9 @@ class Form extends React.Component {
 
     return (
       <div>
-        <p className={display}>yay</p>
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
-        <input className={styles.name} />
+        <p className={display}><Card /></p>
+        <button onClick={()=>{this.clickHandler()}}>Check</button>
+        <button onClick={()=>{this.clickHandler()}}>Next Card</button>
       </div>
     );
   }
