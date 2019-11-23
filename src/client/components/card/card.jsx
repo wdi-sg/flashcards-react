@@ -33,6 +33,10 @@ class Card extends React.Component {
         clickCounter:0,
         message:""
     };
+
+    this.clickHandler = this.clickHandler.bind(this)
+    this.clickNext = this.clickNext.bind(this)
+    this.clickPrevious = this.clickPrevious.bind(this)
   }
 
 
@@ -100,12 +104,12 @@ class Card extends React.Component {
         <div style = {{border: "1px solid black"}} className = {back}>Answer: {cardInfo[index].answer}</div>
 
 
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
+        <button onClick={this.clickHandler}>click to change</button>
         <br/>
 
-        <button onClick={()=>{this.clickPrevious()}}>Previous Card</button>
+        <button onClick={this.clickPrevious}>Previous Card</button>
 
-        <button onClick={()=>{this.clickNext()}}>Next Card</button>
+        <button onClick={this.clickNext}>Next Card</button>
 
 
 
