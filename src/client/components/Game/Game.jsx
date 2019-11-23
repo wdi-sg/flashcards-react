@@ -35,18 +35,18 @@ class Game extends React.Component {
 
     sortCard(boolean) {
         this.setState(boolean ? {know:[this.state.questionNum,...this.state.know]} : {dunno:[this.state.questionNum,...this.state.dunno]})
-        console.log(this.state.know,this.state.dunno)
+        this.setState(boolean ? {dunno:this.state.dunno.filter(qNum=> qNum !== this.state.questionNum)} : {know:this.state.know.filter(qNum=> qNum !== this.state.questionNum)})
     }
 
     render() {
-
+        const wells = cx(styles.wells,styles.bottom)
         const firstCard = cx(
-            styles.section, {
+            styles.buttons, {
             [styles.edge]: this.state.questionNum == 0
         })
 
         const lastCard = cx(
-            styles.section, {
+            styles.buttons, {
             [styles.edge]: this.state.questionNum == this.state.cards.length - 1
         })
         return (<div className={styles.game}>
@@ -56,7 +56,7 @@ class Game extends React.Component {
             <div className={firstCard}>
                 <button onClick={()=>{this.previousQuestion()}}>Previous</button>
             </div>
-            <div className={styles.section}>
+            <div className={styles.card}>
                 <Card state={this.state} card={this.state.cards[this.state.questionNum]} flipCard={()=>{this.flipCard()}}/>
                 <SortBucket state={this.state} sortCard={(boolean)=>{this.sortCard(boolean)}} />
             </div>
