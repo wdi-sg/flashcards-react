@@ -12,26 +12,19 @@ class App extends React.Component {
         currentAnswer: '',
         cardIndex: 0,
         cards: [
-        {
-            question: "I want it all.",
-            answer: "I want it now",
-        },
-        {
-            question: 'We will we will',
-            answer: "Rock you",
-        },
-        {
-            question: "She's a killer queen",
-            answer: 'Gunpowder and Gelatine',
-        },
-      ],
+            {
+                question: "Undefined.",
+                answer: "Banana",
+                correct: ""
+            },
+        ],
+        answeredCards:[],
     }
   }
 
-  store(question, answer){
-    console.log(question + " HELLO " + answer)
-    var newObj = {question, answer}
-    console.log(this.state.cards)
+  store(question, answer, correct){
+    var newObj = {question, answer, correct}
+    console.log("New question added: ",newObj)
     this.setState({cards: [...this.state.cards,{...newObj}]})
   }
 
@@ -53,7 +46,16 @@ class App extends React.Component {
   }
 
   answer(text){
-    this.setState({currentAnswer: text});
+    if(text === "Correct"){
+        console.log("WOW SMART");
+        var card = this.state.cards.splice(this.state.cardIndex,1)
+        console.log("The card that was just answered: ",card)
+        this.setState({currentAnswer: text, answeredCards: [...this.state.answeredCards,{...card}]});
+        console.log("List of cards answered: ",this.state.answeredCards)
+    } else if (text === "Wrong"){
+        console.log("Try again")
+    }
+
   }
 
   render() {
@@ -61,7 +63,7 @@ class App extends React.Component {
       <div>
         <Form currentAnswer={this.state.currentAnswer} cards={this.state.cards} cardIndex={this.state.cardIndex} nextQns={()=>{this.nextQns()}} prvQns={()=>{this.prvQns()}}/>
         <Input cards={this.state.cards} cardIndex={this.state.cardIndex} answer={(text)=>{this.answer(text)}}/>
-        <NewQns store={(question, answer)=>{this.store(question,answer)}}/>
+        <NewQns store={(question, answer,correct)=>{this.store(question,answer,correct)}}/>
       </div>
     );
   }

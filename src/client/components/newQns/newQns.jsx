@@ -4,7 +4,9 @@ class NewQns extends React.Component {
     changeHandler(){
         var newQ = document.getElementById("newQ").value;
         var newA = document.getElementById("newA").value;
-        this.props.store(newQ,newA)
+        var correct = ""
+        console.log(correct)
+        this.props.store(newQ,newA,correct)
     }
 
     render(){
