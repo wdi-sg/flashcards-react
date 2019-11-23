@@ -35,7 +35,6 @@ class Game extends React.Component {
 
     sortCard(boolean) {
         this.setState(boolean ? {know:[this.state.questionNum,...this.state.know]} : {dunno:[this.state.questionNum,...this.state.dunno]})
-        console.log(this.state)
     }
 
     render() {
@@ -55,7 +54,7 @@ class Game extends React.Component {
             </div>
             <div className={styles.section}>
                 <Card state={this.state} card={this.state.cards[this.state.questionNum]} flipCard={()=>{this.flipCard()}}/>
-                <SortBucket sortCard={(boolean)=>{this.sortCard(boolean)}} />
+                <SortBucket state={this.state} sortCard={(boolean)=>{this.sortCard(boolean)}} />
             </div>
             <div className={lastCard}>
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
