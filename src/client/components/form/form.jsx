@@ -1,8 +1,26 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import classnames from 'classnames';
 
 import styles from './style.scss';
+
+const cards = [
+  {
+    question: '2+2',
+    answer: 4
+  },
+  {
+    question: 'capital of Malaysia',
+    answer: 'Kuala Lumpur'
+  },
+  {
+    question: 'Kilometers in a mile',
+    answer: 1.6
+  },
+];
+
+const cardsLength = cards.length;
 
 const cx = classnames.bind(styles)
 
@@ -12,13 +30,14 @@ class Form extends React.Component {
     super();
 
     this.state = {
+      cardId: 0,
       clicked:false
+
     };
   }
 
   clickHandler(){
-
-    this.setState({clicked:!this.state.clicked})
+    this.setState({cardId: this.state.cardId+1})
   }
 
   render() {
@@ -33,7 +52,7 @@ class Form extends React.Component {
 
     return (
       <div>
-        <p className={display}>yay</p>
+        <p className={display}>Card Number {this.state.cardId}</p>
         <button onClick={()=>{this.clickHandler()}}>click to change</button>
         <input className={styles.name} />
       </div>
