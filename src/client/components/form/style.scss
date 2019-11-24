@@ -12,5 +12,20 @@
 
 .clicked{
   background-color:grey;
+}
 
+.hideQuestion{
+    display: none;
+}
+
+.showQuestion{
+    display: block;
+}
+
+.hideAnswer{
+    display: none;
+}
+
+.showAnswer{
+    display: inline-block;
 }
