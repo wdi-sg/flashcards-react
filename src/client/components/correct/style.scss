@@ -1,0 +1,29 @@
+.flex{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.myclass{
+  background-color:#EFE9E3;
+  box-shadow: 0 0 5px;
+  border-radius: 10px;
+  display: inline-block;
+  width: 300px;
+  margin: 3% 0;
+  text-align: center;
+  padding: 5px;
+}
+
+.know{
+  background-color: #23292E;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 5px 30px;
+  text-align: center;
+	opacity: 0.7;
+}
