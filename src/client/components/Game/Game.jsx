@@ -24,11 +24,14 @@ class Game extends React.Component {
 
     changeAnswer(value) {
         this.setState({currentAnswer: value})
-        console.log(this.state.currentAnswer)
     }
 
     checkAnswer() {
-        (this.state.currentAnswer == this.state.cards[this.state.questionNum].answer) ? this.sortCard(true) : this.sortCard(false);
+        if (this.state.currentAnswer == this.state.cards[this.state.questionNum].answer) {
+            if (!this.state.know.includes(this.state.questionNum)) {this.sortCard(true)}
+        } else {
+            if (!this.state.dunno.includes(this.state.questionNum)) {this.sortCard(false)}
+        }
     }
 
     previousQuestion() {
@@ -71,10 +74,10 @@ class Game extends React.Component {
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
             </div>
             <div className={wells}>
-                <h1>Correct: {this.state.know.length}</h1>
+                <h1>I know! X {this.state.know.length}</h1>
             </div>
             <div className={wells}>
-                <h1>Wrong: {this.state.dunno.length}</h1>
+                <h1>I don't know... X {this.state.dunno.length}</h1>
             </div>
         </div>);
     }
