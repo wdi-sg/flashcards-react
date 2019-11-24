@@ -9,7 +9,7 @@ const cx = classnames.bind(styles)
 const cards = [
   {
     question: 'What is 2+2?',
-    answer: 4
+    answer: 4 + " Quick MAFFFS"
   },
   {
     question: 'capital of Malaysia',
@@ -18,6 +18,10 @@ const cards = [
   {
     question: 'Kilometers in a mile',
     answer: 1.6
+  },
+  {
+    question: 'What is the capital of France?',
+    answer: "Paris"
   },
 ];
 
@@ -59,7 +63,7 @@ class Form extends React.Component {
     const display = cx(
       styles.myclass, // styles that never change
       { // dynamic styles
-        // [styles.clicked]: this.state.clicked // make the key the style name, and the value the dynamic boolean
+        [styles.clicked]: this.state.clicked // make the key the style name, and the value the dynamic boolean
       }
     )
     // seeing card number
@@ -69,6 +73,7 @@ class Form extends React.Component {
       <div>
         <p className={display} > Question: {cards[this.state.cardNum].question}</p>
         <p className={display}>Answer: {this.state.answer}</p>
+
         <button onClick={() => (this.clickAnswer())}>Show Answer</button>
         <button onClick={() => { this.clickForward() }}>Next Question</button>
         <button onClick={() => { this.clickBackward() }}>Previous Question</button>
