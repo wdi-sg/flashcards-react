@@ -17,8 +17,18 @@ class Game extends React.Component {
                 {question: 'Kilometers in a mile',answer: 1.6},
             ],
             know:[],
-            dunno:[]
+            dunno:[],
+            currentAnswer: ""
         };
+    }
+
+    changeAnswer(value) {
+        this.setState({currentAnswer: value})
+        console.log(this.state.currentAnswer)
+    }
+
+    checkAnswer() {
+        (this.state.currentAnswer == this.state.cards[this.state.questionNum].answer) ? this.sortCard(true) : this.sortCard(false);
     }
 
     previousQuestion() {
@@ -54,17 +64,17 @@ class Game extends React.Component {
                 <button onClick={()=>{this.previousQuestion()}}>Previous</button>
             </div>
             <div className={styles.card}>
-                <Card state={this.state} card={this.state.cards[this.state.questionNum]} flipCard={()=>{this.flipCard()}}/>
+                <Card state={this.state} card={this.state.cards[this.state.questionNum]} flipCard={()=>{this.flipCard()}} changeAnswer={(value)=>{this.changeAnswer(value)}} checkAnswer={()=>this.checkAnswer()}/>
                 <SortBucket state={this.state} sortCard={(boolean)=>{this.sortCard(boolean)}} />
             </div>
             <div className={lastCard}>
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
             </div>
             <div className={wells}>
-                <h1>{this.state.know.length} I know!</h1>
+                <h1>Correct: {this.state.know.length}</h1>
             </div>
             <div className={wells}>
-                <h1>{this.state.dunno.length} I don't know...</h1>
+                <h1>Wrong: {this.state.dunno.length}</h1>
             </div>
         </div>);
     }
