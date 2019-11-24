@@ -6,19 +6,39 @@ import styles from './style.scss';
 
 const cx = classnames.bind(styles)
 
+const cards = [
+  {
+    question: 'What is 2+2?',
+    answer: 4
+  },
+  {
+    question: 'capital of Malaysia',
+    answer: 'Kuala Lumpur'
+  },
+  {
+    question: 'Kilometers in a mile',
+    answer: 1.6
+  },
+];
+
+console.log("HEHEHEH", cards[0].question);
+
 class Form extends React.Component {
 
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
-      clicked:false
+      clicked: false,
+      title: cards[0].question
+
     };
   }
 
-  clickHandler(){
+  clickHandler() {
 
-    this.setState({clicked:!this.state.clicked})
+    this.setState({ clicked: !this.state.clicked, title: cards[0].answer })
+
   }
 
   render() {
@@ -33,9 +53,7 @@ class Form extends React.Component {
 
     return (
       <div>
-        <p className={display}>yay</p>
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
-        <input className={styles.name} />
+        <p onClick={() => { this.clickHandler() }} className={display} > {this.state.title}</p>
       </div>
     );
   }
