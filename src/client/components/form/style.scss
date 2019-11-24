@@ -11,6 +11,27 @@
 }
 
 .clicked{
-  background-color:grey;
+  background-color:pink;
 
+}
+
+button {
+	justify-content: center;
+	margin: auto;
+	display: flex;
+	align-items: center;
+}
+
+p, h1 {
+	justify-content: center;
+	display: flex;
+	align-items:center;
+}
+
+.previous {
+	margin-left: auto;
+}
+
+.next {
+	margin-right: auto;
 }
