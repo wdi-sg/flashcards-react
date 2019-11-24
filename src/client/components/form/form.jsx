@@ -27,9 +27,7 @@ class Form extends React.Component {
 
     this.state = {
       clicked: false,
-      cardNumber: 0,
-      prevClicked: false,
-      nextClicked: false
+      cardNumber: 0
     };
   }
 
