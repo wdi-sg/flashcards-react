@@ -1,14 +1,14 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import Form from './components/form/form';
+import Card from './components/card/card';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Form />
-        Welcome.
+        <Card />
+        
       </div>
     );
   }

@@ -1,0 +1,27 @@
+.name{
+  border: 10px solid blue;
+  padding:5px;
+  margin:20px;
+}
+
+.myclass{
+  padding:30px;
+  background-color:grey;
+  height: 200px;
+  display: none;
+}
+
+.clicked{
+  background-color:grey;
+  display: block;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+
+}
+
+.next{
+  width: 50px;
+  border-radius: 30px;
+}
+
