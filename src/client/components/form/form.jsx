@@ -20,7 +20,7 @@ const cards = [
   },
 ];
 
-const cardsLength = cards.length;
+const cardsLength = cards.length -1;
 
 const cx = classnames.bind(styles)
 
@@ -36,8 +36,20 @@ class Form extends React.Component {
     };
   }
 
-  clickHandler(){
+  clickForward(){
+    console.log('clicked forward')
+    console.log(this.state.cardId)
+    if (this.state.cardId < cardsLength && this.state.cardId >= 0 ) {
     this.setState({cardId: this.state.cardId+1})
+    }
+  }
+
+  clickBackward(){
+    console.log('clicked backward')
+    console.log(this.state.cardId)
+    if (this.state.cardId <= cardsLength && this.state.cardId > 0 ) {
+    this.setState({cardId: this.state.cardId-1})
+    }
   }
 
   render() {
@@ -52,9 +64,12 @@ class Form extends React.Component {
 
     return (
       <div>
-        <p className={display}>Card Number {this.state.cardId}</p>
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
-        <input className={styles.name} />
+        <p className={display}>Question: {cards[this.state.cardId].question}<br/>
+        Answer: {cards[this.state.cardId].answer}
+        
+        </p>
+        <button onClick={()=>{this.clickBackward()}}>Previous</button>
+        <button onClick={()=>{this.clickForward()}}>Next</button>
       </div>
     );
   }
