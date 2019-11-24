@@ -31,6 +31,7 @@ class Form extends React.Component {
 
     this.state = {
       cardId: 0,
+      answer: "",
       clicked:false
 
     };
@@ -41,6 +42,7 @@ class Form extends React.Component {
     console.log(this.state.cardId)
     if (this.state.cardId < cardsLength && this.state.cardId >= 0 ) {
     this.setState({cardId: this.state.cardId+1})
+    this.setState({answer: ""})
     }
   }
 
@@ -49,7 +51,16 @@ class Form extends React.Component {
     console.log(this.state.cardId)
     if (this.state.cardId <= cardsLength && this.state.cardId > 0 ) {
     this.setState({cardId: this.state.cardId-1})
+    this.setState({answer: ""})
     }
+  }
+
+  clickAnswer(){
+    console.log('clicked answer')
+    console.log(this.state.cardId)
+    let cardId = this.state.cardId;
+    console.log(cards[cardId].answer)
+    this.setState({answer: cards[cardId].answer})
   }
 
   render() {
@@ -65,9 +76,9 @@ class Form extends React.Component {
     return (
       <div>
         <p className={display}>Question: {cards[this.state.cardId].question}<br/>
-        Answer: {cards[this.state.cardId].answer}
-        
+        Answer: {this.state.answer}
         </p>
+        <button onClick={()=>{this.clickAnswer()}}>Answer</button>
         <button onClick={()=>{this.clickBackward()}}>Previous</button>
         <button onClick={()=>{this.clickForward()}}>Next</button>
       </div>
