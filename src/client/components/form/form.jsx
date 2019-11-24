@@ -21,7 +21,6 @@ const cards = [
   },
 ];
 
-console.log("HEHEHEH", cards[0].question);
 
 class Form extends React.Component {
 
@@ -30,15 +29,28 @@ class Form extends React.Component {
 
     this.state = {
       clicked: false,
-      title: cards[0].question
+      cardNum: 0,
+      answer: ""
 
     };
   }
 
-  clickHandler() {
+  clickAnswer() {
+    this.setState({ clicked: !this.state.clicked, answer: cards[this.state.cardNum].answer })
 
-    this.setState({ clicked: !this.state.clicked, title: cards[0].answer })
+  }
 
+  clickForward() {
+    // moving on to next card..
+    if (this.state.cardNum < (cards.length - 1)) {
+      this.setState({ clicked: !this.state.clicked, cardNum: this.state.cardNum + 1, answer: "" })
+    }
+  }
+
+  clickBackward() {
+    if (this.state.cardNum > 0) {
+      this.setState({ clicked: !this.state.clicked, cardNum: this.state.cardNum - 1, answer: "" })
+    }
   }
 
   render() {
@@ -47,13 +59,19 @@ class Form extends React.Component {
     const display = cx(
       styles.myclass, // styles that never change
       { // dynamic styles
-        [styles.clicked]: this.state.clicked // make the key the style name, and the value the dynamic boolean
+        // [styles.clicked]: this.state.clicked // make the key the style name, and the value the dynamic boolean
       }
     )
+    // seeing card number
+    console.log("card num is", this.state.cardNum)
 
     return (
       <div>
-        <p onClick={() => { this.clickHandler() }} className={display} > {this.state.title}</p>
+        <p className={display} > Question: {cards[this.state.cardNum].question}</p>
+        <p className={display}>Answer: {this.state.answer}</p>
+        <button onClick={() => (this.clickAnswer())}>Show Answer</button>
+        <button onClick={() => { this.clickForward() }}>Next Question</button>
+        <button onClick={() => { this.clickBackward() }}>Previous Question</button>
       </div>
     );
   }
