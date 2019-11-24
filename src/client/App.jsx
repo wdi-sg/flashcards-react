@@ -1,6 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from './style.scss';
+
 import Form from './components/form/form';
 
 class App extends React.Component {
@@ -34,7 +37,6 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Welcome</h1>
-                <hr/>
                 <button onClick={() => {this.clickStart()}}>{showEndBtn}</button>
                 <Form startCard={this.state.start} />
             </div>

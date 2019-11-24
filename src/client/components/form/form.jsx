@@ -32,6 +32,16 @@ class Form extends React.Component {
     };
   }
 
+  clickPrev() {
+    console.log("Previous Question is clicked");
+
+    if(this.state.index === 0) {
+        console.log("First question lo!");
+    } else {
+        this.setState({index: this.state.index - 1, showAnswer: false});
+    }
+  }
+
   clickNext() {
     console.log("Next Question is clicked");
 
@@ -62,23 +72,42 @@ class Form extends React.Component {
         var showQuestion = styles.hideQuestion;
     } else {
         var showQuestion = styles.showQuestion;
+        var category = "Question";
+        var card = this.state.cards[currentIndex].question;
     }
 
     if(this.state.showAnswer === true) {
         var showAnswer = styles.showAnswer;
+        var category = "Answer";
+        var card = this.state.cards[currentIndex].answer;
     } else {
         var showAnswer = styles.hideAnswer;
     }
 
     return (
         <div>
-          <div className={showQuestion}>
-            <p>Question: {this.state.cards[currentIndex].question}</p>
-            <button onClick={() => this.clickNext()}>Next Question</button>
-            <button onClick={() => this.clickAnswer()}>Show Answer</button>
-          </div>
-          <p className={showAnswer}>Answer: {this.state.cards[currentIndex].answer}</p>
-      </div>
+            <div className={styles.contentArea}>
+                <div className={styles.col}>
+                    <button onClick={() => this.clickPrev()} className={styles.prevQn}>&lt;</button>
+                </div>
+
+                <div className={styles.main}>
+                    <div className={styles.category}>
+                        <h3>{category}</h3>
+                    </div>
+                    <div className={styles.card}>
+                        <h2>{card}</h2>
+                    </div>
+                    <div className={styles.bottomRow}>
+                        <button onClick={() => this.clickAnswer()} className={styles.showAnswer}>Show Answer</button>
+                    </div>
+                </div>
+
+                <div className={styles.col}>
+                    <button onClick={() => this.clickNext()} className={styles.nxtQn}>&gt;</button>
+                </div>
+            </div>
+        </div>
     );
   }
 }
