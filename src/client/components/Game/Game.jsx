@@ -12,13 +12,14 @@ class Game extends React.Component {
             questionNum: 0,
             showQuestion: true,
             cards: [
-                {question: '2+2',answer: 4},
-                {question: 'capital of Malaysia',answer: 'Kuala Lumpur'},
-                {question: 'Kilometers in a mile',answer: 1.6},
+                {question: '2+2',answer: 4,attempted: false},
+                {question: 'capital of Malaysia',answer: 'Kuala Lumpur',attempted: false},
+                {question: 'Kilometers in a mile',answer: 1.6,attempted: false},
             ],
             know:[],
             dunno:[],
-            currentAnswer: ""
+            currentAnswer: "",
+            attempted:[]
         };
     }
 
@@ -27,6 +28,7 @@ class Game extends React.Component {
     }
 
     checkAnswer() {
+        if (!this.state.attempted.includes(this.state.questionNum)) {this.setState({attempted:[this.state.questionNum,...this.state.attempted]})}
         if (this.state.currentAnswer == this.state.cards[this.state.questionNum].answer) {
             if (!this.state.know.includes(this.state.questionNum)) {this.sortCard(true)}
         } else {
@@ -57,10 +59,21 @@ class Game extends React.Component {
             styles.buttons, {
             [styles.edge]: this.state.questionNum == 0
         })
-
         const lastCard = cx(
             styles.buttons, {
             [styles.edge]: this.state.questionNum == this.state.cards.length - 1
+        })
+        const feedback = cx(
+            styles.fullWidth,{
+            [styles.edge]: !this.state.attempted.includes(this.state.questionNum)
+        })
+        const correct = cx(
+            styles.correct,{
+            [styles.edge]: !this.state.know.includes(this.state.questionNum)
+        })
+        const wrong = cx(
+            styles.wrong,{
+            [styles.edge]: !this.state.dunno.includes(this.state.questionNum)
         })
         return (<div className={styles.game}>
             <div className={firstCard}>
@@ -72,6 +85,9 @@ class Game extends React.Component {
             </div>
             <div className={lastCard}>
                 <button onClick={()=>{this.nextQuestion()}}>Next</button>
+            </div>
+            <div className={feedback}>
+                <span className={correct}>CORRECT!</span><span className={wrong}>WRONG!</span>
             </div>
             <div className={wells}>
                 <h1>I know! X {this.state.know.length}</h1>
