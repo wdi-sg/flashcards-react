@@ -3,6 +3,16 @@ import React from 'react';
 import classnames from 'classnames';
 
 import styles from './style.scss';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+
+
+
 
 const cx = classnames.bind(styles)
 
@@ -39,6 +49,7 @@ class Form extends React.Component {
     };
   }
 
+
   clickAnswer() {
     this.setState({ clicked: !this.state.clicked, answer: cards[this.state.cardNum].answer })
 
@@ -57,6 +68,7 @@ class Form extends React.Component {
     }
   }
 
+
   render() {
 
     // calling cx sets all the styles on the element in the display variable
@@ -69,17 +81,22 @@ class Form extends React.Component {
     // seeing card number
     console.log("card num is", this.state.cardNum)
 
-    return (
-      <div>
-        <p className={display} > Question: {cards[this.state.cardNum].question}</p>
-        <p className={display}>Answer: {this.state.answer}</p>
 
-        <button onClick={() => (this.clickAnswer())}>Show Answer</button>
-        <button onClick={() => { this.clickForward() }}>Next Question</button>
-        <button onClick={() => { this.clickBackward() }}>Previous Question</button>
-      </div>
+    return (
+      <Card>
+        <CardContent>
+          <Typography color="textSecondary" gutterBottom className={display} > Question: {cards[this.state.cardNum].question}</Typography>
+          <Typography variant="body2" component="p" className={display}>Answer: {this.state.answer}</Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary" onClick={() => (this.clickAnswer())}>Show Answer</Button>
+          <Button size="small" color="primary" onClick={() => { this.clickForward() }}>Next Question</Button>
+          <Button size="small" color="primary" onClick={() => { this.clickBackward() }}>Previous Question</Button>
+        </CardActions>
+      </Card>
     );
   }
+
 }
 
 export default Form;
