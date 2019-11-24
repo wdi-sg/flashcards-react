@@ -1,0 +1,43 @@
+.game {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.buttons {
+	width: 25vw;
+}
+
+.card {
+	width: 50vw;
+}
+
+.wells {
+	width: 50vw;
+}
+
+.edge {
+	visibility: hidden;
+}
+
+.bottom {
+	align-self: flex-end;
+}
+
+.fullWidth {
+	width: 100vw;
+}
+
+.correct {
+	color: green;
+}
+
+.wrong {
+	color: red;
+}
+
+.d-none {
+	display: none;
+}
