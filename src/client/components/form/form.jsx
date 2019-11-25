@@ -12,13 +12,34 @@ class Form extends React.Component {
     super();
 
     this.state = {
-      clicked:false
+      clicked:false,
+      currentAnswer: '',
     };
   }
 
   clickHandler(){
 
     this.setState({clicked:!this.state.clicked})
+  }
+
+  changeHandler(){
+    console.log(event.target.value)
+    // this.setState({question: event.target.value})
+  }
+
+  showAnswer(answer){
+    console.log(answer)
+    this.setState({currentAnswer: answer})
+  }
+
+  checkAnswer(answer){
+    if(event.key === 'Enter'){
+        if(event.target.value === answer){
+            this.setState({currentAnswer: "Correct"})
+        } else {
+            this.setState({currentAnswer: "Wrong"})
+        }
+    }
   }
 
   render() {
@@ -31,13 +52,51 @@ class Form extends React.Component {
       }
     )
 
-    return (
-      <div>
-        <p className={display}>yay</p>
-        <button onClick={()=>{this.clickHandler()}}>click to change</button>
-        <input className={styles.name} />
-      </div>
-    );
+    const card = cx(
+        styles.cardhide,
+        {
+            [styles.card]: (this.props.id === "Card2"),
+        }
+    )
+
+    const displayCard = this.props.cards.map((x, index)=>{
+        return (
+            <div key={index} id={"Card"+index}>
+                <p>{x.question}</p>
+                <button onClick={()=>{this.showAnswer(x.answer)}}>Show answer</button>
+                <input onKeyPress={()=>{this.checkAnswer(x.answer)}}/>
+            </div>
+        )
+    })
+    if(this.props.cards.length !== 0){
+        return (
+          <div>
+            <div className={display}>
+                <p>Answer</p>
+                <p>{this.props.currentAnswer}</p>
+            </div>
+            <div className={display}>
+                <p>Question</p>
+                <p>{this.props.cards[this.props.cardIndex].question}</p>
+            </div>
+            <button onClick={()=>{this.props.nextQns()}}>Next Question</button>
+            <button onClick={()=>{this.props.prvQns()}}>Previous Question</button>
+            {/*displayCard*/}
+          </div>
+        );
+    } else {
+        return (
+          <div>
+            <div className={display}>
+                <p>Answer</p>
+                <p>{this.props.currentAnswer}</p>
+            </div>
+            <div className={display}>
+                <p>No questions</p>
+            </div>
+          </div>
+        )
+    }
   }
 }
 
