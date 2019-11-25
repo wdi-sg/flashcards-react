@@ -6,36 +6,31 @@ const cx = classnames.bind(styles)
 
 class Card extends React.Component {
 
-    constructor() {
-        super();
-
-        this.state = {
-            clicked: false
-        };
-    }
-
-    clickHandler() {
-        this.setState({ clicked: !this.state.clicked })
-    }
-
     render() {
 
         const answer = cx(
-            { 
+            {
                 [styles.hideAnswer]: !this.props.showAnswer,
                 [styles.showAnswer]: this.props.showAnswer
             }
         );
 
-        let {content, cardNumber} = this.props;
+        let { cards, cardNumber } = this.props;
+
+        // avoid accessing a non-existent card
+        if (cardNumber > cards.length - 1) {
+            cardNumber = cards.length - 1
+        } 
 
         return (
-            <div onClick={()=>{this.clickHandler()}} className={styles.card}>
-                <p>{content[cardNumber].question}</p>
-                <p className={answer}>
-                    {content[cardNumber].answer}
+            <div className={styles.card}>
+                <p>
+                    {cards[cardNumber].question}
                 </p>
-            </div>            
+                <p className={answer}>
+                    {cards[cardNumber].answer}
+                </p>
+            </div>
         );
 
 

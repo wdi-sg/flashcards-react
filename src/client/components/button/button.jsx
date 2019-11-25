@@ -4,7 +4,8 @@ class Button extends React.Component {
 
     render() {
         return (
-        <button onClick={this.props.clicked}>{this.props.buttonText}</button>
+        <button onClick={this.props.clicked} disabled={this.props.disabled}>                   {this.props.buttonText}
+        </button>
         );
 
     }
