@@ -12,11 +12,11 @@ class App extends React.Component {
         currentAnswer: '',
         cardIndex: 0,
         cards: [
-            {
-                question: "Undefined.",
-                answer: "Banana",
-                correct: ""
-            },
+            // {
+            //     question: "Undefined.",
+            //     answer: "Banana",
+            //     correct: ""
+            // },
         ],
         answeredCards:[],
     }
@@ -61,6 +61,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <p>Number of questions correct: {this.state.answeredCards.length}</p>
         <Form currentAnswer={this.state.currentAnswer} cards={this.state.cards} cardIndex={this.state.cardIndex} nextQns={()=>{this.nextQns()}} prvQns={()=>{this.prvQns()}}/>
         <Input cards={this.state.cards} cardIndex={this.state.cardIndex} answer={(text)=>{this.answer(text)}}/>
         <NewQns store={(question, answer,correct)=>{this.store(question,answer,correct)}}/>

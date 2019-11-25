@@ -86,7 +86,15 @@ class Form extends React.Component {
         );
     } else {
         return (
-            <p>No questions</p>
+          <div>
+            <div className={display}>
+                <p>Answer</p>
+                <p>{this.props.currentAnswer}</p>
+            </div>
+            <div className={display}>
+                <p>No questions</p>
+            </div>
+          </div>
         )
     }
   }
