@@ -29,13 +29,14 @@ export class Cards extends Component {
           qnCounter: 0,
           qn: "",
           ans: "",
-          showAns: false
+          showAns: false,
+          showQn: false
         };
       }
     showAnswer(){
         console.log(this.state.qnCounter)
         let answer = cards[this.state.qnCounter -1 ].answer
-        this.setState({ans: answer, showAns: !this.state.showAns})
+        this.setState({ans: answer, showAns: !this.state.showAns, showQn: !this.state.showQn})
     }
 
     nextQuestion() {
@@ -43,10 +44,16 @@ export class Cards extends Component {
         console.log(this.state.qnCounter)
       
           let question = cards[this.state.qnCounter].question
-          this.setState({qn: question, showAns: false})
+          this.setState({qn: question, showAns: false, showQn: true})
           this.state.qnCounter ++
+    }
+    markKnow() {
+        console.log("KNOW")
         
-       
+    }
+
+    markDontKnow() {
+        console.log("DONT KNOW")
     }
     render() {
         const showAns = cx(
@@ -55,16 +62,24 @@ export class Cards extends Component {
               [styles.hide]: !this.state.showAns 
             }
           )
-       
+        const showQn = cx(
+            styles.show,
+            { 
+              [styles.hide]: !this.state.showQn 
+            }
+          )
+       console.log(this.props)
         return (
            <div className="container text-center mt-5 border">
-            <h1>HERE WE GO</h1>
-            <div className="container text-center border">
-               <h1>{this.state.qn}</h1>
-               <h2 className={showAns}>{this.state.ans}</h2>
+        
+            <div className="container text-center border mb-5">
+               <div className={showQn}><h1>Qn: {this.state.qn}</h1> </div>
+               <div className={showAns}> <h1>Ans: {this.state.ans}</h1></div>
+              Know <input type="checkbox" onChange={this.markKnow}/> {' '}
+               Dont' Know <input type="checkbox" onChange={this.markDontKnow}/>
             </div>
 
-            <button onClick={()=>{this.showAnswer()}}>Show Answer</button>
+            <button onClick={()=>{this.showAnswer()}}>Flip</button>
             <button onClick={()=>{this.nextQuestion()}}>Next Question</button>
                
            </div>

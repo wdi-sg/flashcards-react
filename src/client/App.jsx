@@ -1,14 +1,18 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import Card from './components/cards/cards'
-import Form from './components/form/form';
+import Box from './components/boxes/Boxes'
 
 class App extends React.Component {
   render() {
     return (
       <div>
-     <Card/>
-        
+     <Card />
+     <div className="text-center">
+
+     <Box/>
+     </div>
+      
       </div>
     );
   }
