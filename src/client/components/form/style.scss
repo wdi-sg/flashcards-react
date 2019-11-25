@@ -1,16 +1,14 @@
 .name{
-  border: 10px solid blue;
+  border: 1px solid #DDD;
+  border-radius: 10px;
   padding:5px;
-  margin:20px;
+  transition: all 0.30s ease-in-out;
 }
 
-.myclass{
-  margin:10px;
-  padding:30px;
-  background-color:#c5e0e3;
-}
-
-.clicked{
-  background-color:grey;
-
+.name:focus {
+	border: 1px solid rgba(81, 203, 238, 1);
+	border-radius: 10px;
+	padding:5px;
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	outline: none;
 }
