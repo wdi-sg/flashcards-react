@@ -111,7 +111,7 @@ class App extends React.Component {
 
   inputHandler(e){
     this.setState({userAnswer: e.target.value});
-    if (e.target.value === this.state.card[this.state.counter].answer.toLowerCase()){
+    if (e.target.value.toLowerCase() === this.state.card[this.state.counter].answer.toLowerCase()){
         let card = this.state.card
         card[this.state.counter].message = "You've got the correct answer!"
         this.setState({card: card});
