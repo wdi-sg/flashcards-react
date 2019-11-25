@@ -1,0 +1,25 @@
+.myclass{
+  margin: 5% 20%;
+  padding:5%;
+  background-color:#c5e0e3;
+  width: 50%;
+  height: 200px;
+}
+
+.clicked{
+  background-color:grey;
+
+}
+
+.ansHide {
+	visibility: hidden;
+}
+
+.ansReveal {
+	visibility: visible;
+	font-size: 40px;
+}
+
+.qn {
+	font-size: 40px;
+}

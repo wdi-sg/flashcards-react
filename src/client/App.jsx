@@ -1,14 +1,18 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import Form from './components/form/form';
+import Card from './components/Card/Card';
 
 class App extends React.Component {
+
+  constructor(){
+    super();
+  }
+
   render() {
     return (
       <div>
-        <Form />
-        Welcome.
+        <Card />
       </div>
     );
   }
